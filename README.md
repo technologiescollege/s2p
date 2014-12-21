@@ -1,7 +1,7 @@
 s2p
 ===
 
-Logiciel simple de contrÃ´le de s2p -Picaxe - pour Scratch2.
+Logiciel simple de contrôle de s2p -Picaxe - pour Scratch2.
 Le logiciel s2p officiel permet d'injecter le firmware adéquat dans le micro contrôleur Picaxe et fournit un fichier pour Scratch2 contenant les blocs nécessaires à son pilotage.
 
 Toutes les informations sur le site officiel : [http://www.picaxe.com/Software/Third-Party/Scratch/](http://www.picaxe.com/Software/Third-Party/Scratch/).
