@@ -9,5 +9,5 @@ Toutes les informations sur le site officiel : [http://www.picaxe.com/Software/T
 Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des exemples et une interface pour tout gérer, ou faire gérer par des enfants de façon simple :
 ![](https://github.com/technologiescollege/s2p/raw/master/documentation/Capture_s2p.JPG)
 
-_De nouvelles fonctions (dont l'internationalisation) et une documentation détaillée apparaîtront...
+_De nouvelles fonctions (dont l'internationalisation) ont été rajoutées à cette v2, mais il manque encore une documentation détaillée...
 N'hésitez pas à contribuer._
