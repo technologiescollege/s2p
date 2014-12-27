@@ -1,7 +1,7 @@
 
 ; *****************************************************************************
 ; *                                                                           *
-; * PICAXE Connect Program                                              016   *
+; * PICAXE Connect Program                                              021   *
 ; *                                                                           *
 ; *****************************************************************************
 ; *                                                                           *
@@ -42,11 +42,17 @@
 ; *     0.14    JB  Support for Motor C and D added for 40X2                  *
 ; *     0.15    JB  X2 Touch pins on ADC channels                             *
 ; *     0.16    JB  Reorganised reset command                                 *
+; *     0.17    JB  Added extra I2C commands (nunchuck)                       *
+; *     0.18    JB  I2C returns "READI2C" packet / I2C setup args swapped     *
+; *     0.19    JB  I2C setup speed setting adjusted                          *
+; *     0.20    JB  I2C READI2C 6-byte return. Fixed bug in testing code      *
+; *     0.21    JB  I2C READI2C compile bug fixed                             *
+; *     0.22    CPS Added RESETOUTPUTS outputs reset                          *
 ; *                                                                           *
 ; *****************************************************************************
 
   Symbol VERSION_MAJOR = 0
-  Symbol VERSION_MINOR = 16
+  Symbol VERSION_MINOR = 22
 
 ; .---------------------------------------------------------------------------.
 ; | Define the PICAXE type during testing                                     |
@@ -547,7 +553,7 @@ FakeReset:
 ; | Display the code's version number                                         |
 ; `---------------------------------------------------------------------------'
 
-  SerTxd( COMMA, #VERSION_MAJOR, ".", #VERSION_MINOR )
+  SerTxd( SPACE, #VERSION_MAJOR, ".", #VERSION_MINOR )
 
 ; .---------------------------------------------------------------------------.
 ; | Initialise the timeout                                                    |
@@ -645,8 +651,10 @@ WaitForCommand:
     Case "T" : Toggle  w1
     Case "V" : Servo   w1, w2
     Case "W" : PwmOut  w2.msb, w2.lsb, w1 ; Note order is reversed
+    Case "X" : Goto    ResetOutputs
 
     Case "a" : Goto    SetPinAs
+    Case "b" : Goto    I2cBlockCommand
     Case "h" : Goto    ReadTempCommand
     Case "i" : Goto    IrInCommand
     Case "r" : Goto    I2cEepromRead
@@ -1058,10 +1066,6 @@ Polling:
 
 TimedOut:
 
-  Reconnect
-
-  Pause MS_100
-
   timeout = timeout - DEC_TIMEOUT Min MIN_TIMEOUT
 
   #IfDef _08M2
@@ -1104,6 +1108,10 @@ TimedOut:
   #Else
     #Error No timeout report for PICAXE type
   #EndIf
+
+  Reconnect
+
+  Pause MS_100
 
   Disconnect
 
@@ -1553,6 +1561,41 @@ UltraCommand:
   SerTxd( "ULTRA" )
   Goto ShowPinPlusResult
 
+
+; *****************************************************************************
+; *                                                                           *
+; * Reset all outputs to 0                                                    *
+; *                                                                           *
+; *****************************************************************************
+
+; .---------------------------------------------------------------------------.
+; | Reset Outputs                                                             |
+; |---------------------------------------------------------------------------|
+; |                                                                           |
+; | The reply packet will be the standard polling packet -                    |
+; |                                                                           |
+; |     [POLL ... ]                                                           |
+; |                                                                           |
+; `---------------------------------------------------------------------------'
+
+ResetOutputs:
+
+  #IfDef _isM2
+
+    pinsB = 0
+    pinsC = 0
+
+  #Else
+
+    pinsB = 0
+    pinsC = 0
+    pinsA = 0
+    pinsD = 0
+
+  #EndIf
+
+  Goto Polling
+  
 ; *****************************************************************************
 ; *                                                                           *
 ; * I2C Interfacing Commands                                                  *
@@ -1572,7 +1615,12 @@ UltraCommand:
 I2cEepromSetup:
 
   If w1 <> 0 Then
-    HI2cSetup I2CMASTER, w1, w2.lsb, w2.msb
+    If w2.msb = 0 Then
+      w2.msb = I2CSLOW
+    Else
+      w2.msb = I2CFAST
+    End If
+    HI2cSetup I2CMASTER, w1, w2.msb, w2.lsb
   Else
     HI2cSetup OFF
   End If
@@ -1626,6 +1674,97 @@ I2cEepromRead:
 
   SerTxd( "I2C", SPACE, #w1 )
   Goto ShowResult
+
+; .---------------------------------------------------------------------------.
+; | I2C Block Commands                                                        |
+; |---------------------------------------------------------------------------|
+; |                                                                           |
+; | This allows bytes to be written and read from an I2C device               |
+; |                                                                           |
+; | SendToPicaxe( "b", rxCount, txCount, tx1data, tx2data )                   |
+; |                                                                           |
+; |                b0  w1.msb   w1.lsb   w2.msb   w2.lsb                      |
+; |                                                                           |
+; | Send 1 byte, no read : SendToPicaxe( "b", 0, 1, $t1, 0   )                |
+; | Send 2 byte, no read : SendToPicaxe( "b", 0, 2, $t1, $t2 )                |
+; |                                                                           |
+; | Send 0 byte, read N  : SendToPicaxe( "b", N, 0, 0,   0   )                |
+; | Send 1 byte, read N  : SendToPicaxe( "b", N, 1, $t1, 0   )                |
+; | Send 2 byte, read N  : SendToPicaxe( "b", N, 2, $t1, $t2 )                |
+; |                                                                           |
+; | The reply packet will have the format of -                                |
+; |                                                                           |
+; |     [READI2C <w0>,<w1>,<w2>]                                              |
+; |                                                                           |
+; | Where -                                                                   |
+; |                                                                           |
+; |     w0.lsb = 1st data byte    w0.msb = 4th data byte                      |
+; |     w1.lsb = 2nd data byte    w1.msb = 5th data byte                      |
+; |     w2.lsb = 3rd data byte    w2.msb = 6th data byte                      |
+; |                                                                           |
+; `---------------------------------------------------------------------------'
+
+I2cBlockCommand:
+
+; #### Faked block read
+
+#rem
+      If w1.msb = 0 Then
+        SerTxd( "SENTI2C" )
+      Else
+        b6 = w1.msb
+        w0 = 1
+        w1 = 0
+        w2 = 0
+        If b21 >= 2 Then : b1 = 2 : End If
+        If b21 >= 3 Then : b2 = 3 : End If
+        If b21 >= 4 Then : b3 = 4 : End If
+        If b21 >= 5 Then : b4 = 5 : End If
+        If b21 >= 6 Then : b5 = 6 : End If
+        b27 = b27 + 1
+        b0  = b27
+        b1  = b27 + 1
+        b2  = b27 + 2
+        b3  = b27 + 3
+        b4  = b27 + 4
+        b5  = b27 + 5
+        SerTxd( "READI2C", SPACE, #b0, COMMA, #b1, COMMA, #b2, _
+                           COMMA, #b3, COMMA, #b4, COMMA, #b5 )
+      End If
+      Goto WaitForCommand
+#endrem
+
+  SetFreq M4
+  Select Case w1.lsb
+    Case 1 : HI2cOut( w2.msb )
+    Case 2 : HI2cOut( w2.msb, w2.lsb )
+  End Select
+  SetFreq FREQ
+
+  If w1.msb = 0 Then
+    SerTxd( "SENTI2C" )
+  Else
+
+    w0 = w1.msb
+    w1 = 0
+    w2 = 0
+
+    SetFreq M4
+    Select Case w0
+      Case 1 : HI2cIn( b0                     )
+      Case 2 : HI2cIn( b0, b1                 )
+      Case 3 : HI2cIn( b0, b1, b2             )
+      Case 4 : HI2cIn( b0, b1, b2, b3         )
+      Case 5 : HI2cIn( b0, b1, b2, b3, b4     )
+      Case 6 : HI2cIn( b0, b1, b2, b3, b4, b5 )
+    End Select
+    SetFreq FREQ
+
+    SerTxd( "READI2C", SPACE, #b0, COMMA, #b1, COMMA, #b2, _
+                       COMMA, #b3, COMMA, #b4, COMMA, #b5 )
+
+  End If
+  Goto WaitForCommand
 
 ; *****************************************************************************
 ; *                                                                           *
