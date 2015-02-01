@@ -21,10 +21,12 @@ using namespace std;  //pour les traductions
 TInterfaceS2P *InterfaceS2P;
 TIniFile *INI = new TIniFile(ExtractFilePath(Application->ExeName)+ "s2p.ini");
 //listes pour récupérer le contenu du fichier INI
-AnsiString locate_scratch2="Scratch 2.exe";
+int choix_langue;
+AnsiString locate_scratch2;
 AnsiString locate_librairie;
 AnsiString locate_project;
 AnsiString locate_doc;
+AnsiString locate_template;
 //listes pour les menus dynamiques
 TStringList *Examples = new TStringList;
 TStringList *Biblio = new TStringList;
@@ -33,7 +35,6 @@ TStringList *Docs = new TStringList;
 TStringList *Extensions1 = new TStringList;
 TStringList *Extensions2 = new TStringList;
 
-AnsiString choix="axe020";
 char *picaxe_choisi="axe020";
 
 //---------------------------------------------------------------------------
@@ -41,52 +42,37 @@ void __fastcall TInterfaceS2P::InitINI()
 {
   //écriture dans le fichier INI des variables utiles
   INI->WriteString("locate Scratch2", "locate_scratch2", "Scratch 2.exe"); //chemin par défaut pour initialiser
+  INI->WriteInteger("langue", "langue", 0); //dans le fichier label.xml, à la balise <Langues>, cela correspond au n° du rang de la langue
   //dossiers à utiliser pour les documents
   INI->WriteString("locate Librairie", "locate_librairie", ExtractFilePath(Application->ExeName) + "bibliotheque\\"); //chemin par défaut pour initialiser
   INI->WriteString("locate Project", "locate_project", ExtractFilePath(Application->ExeName) + "projets\\"); //chemin par défaut pour initialiser
   INI->WriteString("locate Documentation", "locate_doc", ExtractFilePath(Application->ExeName) + "documentation\\"); //chemin par défaut pour initialiser
+  INI->WriteString("locate Modèles", "locate_template", ExtractFilePath(Application->ExeName) + "templates\\"); //chemin par défaut pour initialiser
+  Extensions1->Add(".sb2");
+  SearchTemp(locate_template, Extensions1, ComboBox);
 }
 //---------------------------------------------------------------------------
 __fastcall TInterfaceS2P::TInterfaceS2P(TComponent* Owner)
 	: TForm(Owner)
 {
-	ComboBox->Items->Add("axe020");
-	ComboBox->Items->Add("axe021");
-	ComboBox->Items->Add("axe050");
-	ComboBox->Items->Add("axe055");
-	ComboBox->Items->Add("axe101");
-	ComboBox->Items->Add("axe102");
-	ComboBox->Items->Add("axe105");
-	ComboBox->Items->Add("axe107");
-	ComboBox->Items->Add("axe117");
-	ComboBox->Items->Add("axe118");
-	ComboBox->Items->Add("axe130");
-	ComboBox->Items->Add("bot120");
-	ComboBox->Items->Add("chi030");
-	ComboBox->Items->Add("chi035");
-	ComboBox->Items->Add("picaxe-08m2");
-	ComboBox->Items->Add("picaxe-14m2");
-	ComboBox->Items->Add("picaxe-18m2");
-	ComboBox->Items->Add("picaxe-20m2");
-	ComboBox->Items->Add("picaxe-20x2");
-	ComboBox->Items->Add("picaxe-28x2");
-	ComboBox->Items->Add("picaxe-40x2");
-	ComboBox->ItemIndex=0;
-
 	//vérification de l'existence du fichier INI, sinon le recréé
 	if (!FileExists(ExtractFilePath(Application->ExeName)+ "s2p.ini"))
 		InitINI();
 	//lecture du fichier INI
+	choix_langue=INI->ReadInteger("langue", "langue", 0);
 	locate_scratch2=INI->ReadString("locate Scratch2", "locate_scratch2", "Scratch 2.exe");
 	locate_librairie=INI->ReadString("locate Librairie", "locate_librairie", ExtractFilePath(Application->ExeName) + "bibliotheque\\");
 	locate_project=INI->ReadString("locate Project", "locate_project", ExtractFilePath(Application->ExeName) + "projets\\");
 	locate_doc=INI->ReadString("locate Documentation", "locate_doc", ExtractFilePath(Application->ExeName) + "documentation\\");
+	locate_template=INI->ReadString("locate Modèles", "locate_template", ExtractFilePath(Application->ExeName) + "templates\\");
 
   Extensions1->Add(".sb2");
-  // Appel à Search, avec pour liste des fichiers, les items des listes Bibilo & Examples.
+  // Appel à Search, avec pour liste des fichiers, les items des listes Bibilo & Examples & menu déroulant
   SearchEx(locate_librairie, Extensions1, Biblio,0);
   SearchEx(locate_project, Extensions1, Examples,1);
+  SearchTemp(locate_template, Extensions1, ComboBox);
   delete Extensions1;
+  ComboBox->ItemIndex=0;
   Extensions2->Add(".pdf");
   Extensions2->Add(".odt");
   Extensions2->Add(".lnk");
@@ -101,6 +87,8 @@ __fastcall TInterfaceS2P::TInterfaceS2P(TComponent* Owner)
   AnsiString file = ExtractFilePath(Application->ExeName) + "label.xml";
   langue = new GestionLangue;
   langue->Init(InterfaceS2P->Langue1,file.c_str(),(ptrOnClick)&Langue1Click);
+  //après l'initialisation des langues, le système pioche la langue précédemment sélectionnée
+  langue->Change(choix_langue);
 }
 //-------------------------recherche des fichiers sb2 pour les lister dans le menu Fichier--------------------------------------------------
 void __fastcall TInterfaceS2P::SearchEx(AnsiString FilePath, TStringList * Extensions, TStrings * ListeFichiers, int RangMenu)
@@ -133,11 +121,32 @@ void __fastcall TInterfaceS2P::SearchEx(AnsiString FilePath, TStringList * Exten
   while(!FindNext(Infos_fichier));
   FindClose(Infos_fichier);
 }
+//-------------------------recherche des fichiers sb2 pour les lister dans la liste déroulante des modèles--------------------------------------------------
+void __fastcall TInterfaceS2P::SearchTemp(AnsiString FilePath, TStringList * Extensions, TComboBox * ListeFichiers)
+{
+  TSearchRec Infos_fichier;
+  if (!FindFirst(FilePath+"*.*", faAnyFile, Infos_fichier))
+  do
+  {
+	for (int i = 0 ; i < Extensions->Count ; i++)
+	{
+	  if (ExtractFileExt(Infos_fichier.Name).LowerCase() == Extensions->Strings[i].LowerCase())
+	  {
+		//nettoie le nom de fichier de son extension pour le nom seul du fichier, sans le chemin
+		AnsiString CleanName = StringReplace(Infos_fichier.Name, Extensions->Strings[i].LowerCase(), "",TReplaceFlags() << rfReplaceAll);
+		//rajout d'entrées dans le menu
+		ListeFichiers->Items->Add(CleanName);
+	  }
+	}
+  }
+  while(!FindNext(Infos_fichier));
+  FindClose(Infos_fichier);
+}
 //---------------------associer chaque entrée dynamique dans Biblio & Exemples à leur lancement-------------------
 void __fastcall TInterfaceS2P::ExempleClick(TObject *Sender)
 {
 AnsiString CheminNomFichier;
-ofstream fichier_s2("scratch_ex.bat", ios::out | ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
+ofstream fichier_s2("scratch2.bat", ios::out | ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
 		if(fichier_s2)
 		{
 			   //récupération des infos de l'entrée TMenu qui a déclenché cette fonction
@@ -146,7 +155,7 @@ ofstream fichier_s2("scratch_ex.bat", ios::out | ios::trunc);  // ouverture en é
 			   fichier_s2.close();
 		}
 		else ShowMessage("Le fichier scratch2.bat n'existe pas.");
-ShellExecute(0, 0, "scratch_ex.bat", 0, 0 , SW_HIDE );
+ShellExecute(0, 0, "scratch2.bat", 0, 0 , SW_HIDE );
 }
 //-------------------------recherche des fichiers de docs pour les lister dans les menus Aide & Documentation---------------
 void __fastcall TInterfaceS2P::SearchDocs(AnsiString FilePath, TStringList * Extensions, TStrings * ListeFichiers, int RangMenu)
@@ -162,7 +171,7 @@ void __fastcall TInterfaceS2P::SearchDocs(AnsiString FilePath, TStringList * Ext
 	  {
 		//ajout dans la liste d'une ligne avec le chemin+nom du fichier trouvé
 		ListeFichiers->Add(ExpandFileName(Infos_fichier.Name));
-		//nettoie le nom de fichier de son extension pour le nom seul du fichier, sans le chemin
+		//nettoie le nom de fichier de son extension sb2 pour le nom seul du fichier, sans le chemin
 		AnsiString CleanName = StringReplace(Infos_fichier.Name, Extensions->Strings[i].LowerCase(), "",TReplaceFlags() << rfReplaceAll);
 		//rajout d'entrées dans le menu
 		NewItem = new TMenuItem(this);
@@ -179,7 +188,7 @@ void __fastcall TInterfaceS2P::SearchDocs(AnsiString FilePath, TStringList * Ext
   while(!FindNext(Infos_fichier));
   FindClose(Infos_fichier);
 }
-//---------------------associer chaque entrée dynamique dans Biblio & Exemples à leur lancement-------------------
+//---------------------associer chaque entrée dynamique dans Aide & Documentation à leur lancement-------------------
 void __fastcall TInterfaceS2P::DocsClick(TObject *Sender)
 {
 //récupération des infos de l'entrée TMenu qui a déclenché cette fonction
@@ -233,7 +242,7 @@ void __fastcall TInterfaceS2P::lancer_scratch2Click(TObject *Sender)
 ofstream fichier_s2("scratch2.bat", ios::out | ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
 		if(fichier_s2)
 		{
-				fichier_s2 << "@echo off\nbreak ON\nrem fichiers BAT et fork créés par Sébastien CANET\ncls\nSET currentpath=%~dp1\nSET dossier_scratch="<< '"' << locate_scratch2.c_str() << '"'<< "\nstart %dossier_scratch% %currentpath%fichiers_vides\\" << picaxe_choisi << ".sb2";
+				fichier_s2 << "@echo off\nbreak ON\nrem fichiers BAT et fork créés par Sébastien CANET\ncls\nSET currentpath=%~dp1\nSET dossier_scratch="<< '"' << locate_scratch2.c_str() << '"'<< "\nstart %dossier_scratch% " << '"' << locate_template.c_str() << picaxe_choisi << ".sb2";
 				fichier_s2.close();
 		}
 		else ShowMessage("Le fichier scratch2.bat n'existe pas.");
@@ -267,8 +276,7 @@ ShowMessage("Interface réalisée par Sébastien Canet, décembre 2014.\nv2.0");
 
 void __fastcall TInterfaceS2P::ComboBoxChange(TObject *Sender)
 {
-choix=ComboBox->Text;
-strcpy(picaxe_choisi, choix.c_str());
+strcpy(picaxe_choisi, ComboBox->Text.c_str());
 }
 //---------------------------------------------------------------------------
 
@@ -280,6 +288,7 @@ ShellExecute(0, 0, "devmgmt.msc", 0, 0 , SW_SHOW );
 
 void __fastcall TInterfaceS2P::Langue1Click(TObject *Sender)
 {
+INI->WriteInteger("langue", "langue", ((TMenuItem*)Sender)->Tag);
 langue->Change(((TMenuItem*)Sender)->Tag);
 }
 //---------------------------------------------------------------------------
