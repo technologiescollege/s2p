@@ -9,6 +9,9 @@ Toutes les informations sur le site officiel : [http://www.picaxe.com/Software/T
 Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des exemples et une interface pour tout gérer, ou faire gérer par des enfants de façon simple :
 ![](https://github.com/technologiescollege/s2p/raw/master/aide/Capture_s2p_EXE.JPG)
 
+###Version 2.1 du 22 février 2015
+Rajout de la possibilité de sélectionner les dossiers utilisés pour afficher les documentations, fichiers exemples, etc
+
 ###Version 2.0 du 23 décembre 2014
 Ca y est ! Tout est fini ! Nouveautés :
 - un dossier "Bibliothèque" qui contient des exemples illustrés d'utilisation de s2p
