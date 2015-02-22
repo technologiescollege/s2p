@@ -270,7 +270,7 @@ INI->WriteString("locate Scratch2", "locate_scratch2", locate_scratch2);
 
 void __fastcall TInterfaceS2P::Apropos1Click(TObject *Sender)
 {
-ShowMessage("Interface réalisée par Sébastien Canet, décembre 2014.\nv2.0");
+ShowMessage("Interface réalisée par Sébastien Canet, décembre 2014.\nv2.1");
 }
 //---------------------------------------------------------------------------
 
@@ -299,3 +299,49 @@ DeleteFile("s2p.ini");
 InitINI();
 }
 //---------------------------------------------------------------------------
+void __fastcall TInterfaceS2P::Localiserledossierbibliothque1Click(
+      TObject *Sender)
+{
+if (OpenDialog->Execute()==true) locate_librairie=ExtractFilePath(OpenDialog->FileName);
+//écriture dans le fichier INI
+INI->WriteString("locate Librairie", "locate_librairie", locate_librairie);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInterfaceS2P::Localiserledossierprojets1Click(TObject *Sender)
+{
+if (OpenDialog->Execute()==true) locate_project=ExtractFilePath(OpenDialog->FileName);
+//écriture dans le fichier INI
+INI->WriteString("locate Project", "locate_project", locate_project);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInterfaceS2P::Localiserledossierdocumentation1Click(
+      TObject *Sender)
+{
+if (OpenDialog->Execute()==true) locate_doc=ExtractFilePath(OpenDialog->FileName);
+//écriture dans le fichier INI
+INI->WriteString("locate Documentation", "locate_doc", locate_doc);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInterfaceS2P::SiteofficielPicaxe1Click(TObject *Sender)
+{
+ShellExecute(0, 0, "http://www.picaxe.com/Software/Third-Party/Scratch/#download", 0, 0 , SW_SHOW );
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInterfaceS2P::lchargerlesdrivers1Click(TObject *Sender)
+{
+ShellExecute(0, 0, "https://github.com/technologiescollege/drivers", 0, 0 , SW_SHOW );
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInterfaceS2P::Localiserlesmodles1Click(TObject *Sender)
+{
+if (OpenDialog->Execute()==true) locate_template=ExtractFilePath(OpenDialog->FileName);
+//écriture dans le fichier INI
+INI->WriteString("locate Modèles", "locate_template", locate_template);
+}
+//---------------------------------------------------------------------------
+

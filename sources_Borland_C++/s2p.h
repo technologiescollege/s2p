@@ -56,6 +56,14 @@ __published:	// Composants gérés par l'EDI
 	TMenuItem *N4;
 	TMenuItem *N5;
 	TMenuItem *Init;
+	TMenuItem *N6;
+	TMenuItem *Localiserledossierbibliothque1;
+	TMenuItem *Localiserledossierprojets1;
+	TMenuItem *Localiserledossierdocumentation1;
+	TMenuItem *SiteofficielPicaxe1;
+	TMenuItem *lchargerlesdrivers1;
+	TOpenDialog *OpenDialog;
+	TMenuItem *Localiserlesmodles1;
 	void __fastcall A_proposClick(TObject *Sender);
 	void __fastcall PrparerPicaxeClick(TObject *Sender);
 	void __fastcall Utilisation1Click(TObject *Sender);
@@ -72,11 +80,18 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall ComboBoxChange(TObject *Sender);
 	void __fastcall Gestionnairedepriphriques1Click(TObject *Sender);  
 	void __fastcall SearchEx(AnsiString FilePath, TStringList * Extensions, TStrings * ListeFichiers, int RangMenu);
+	void __fastcall SearchTemp(AnsiString FilePath, TStringList * Extensions, TComboBox * ListeFichiers);
 	void __fastcall SearchDocs(AnsiString FilePath, TStringList * Extensions, TStrings * ListeFichiers, int RangMenu);
 	void __fastcall ExempleClick(TObject *Sender);
 	void __fastcall DocsClick(TObject *Sender);
 	void __fastcall InitINI();
 	void __fastcall InitClick(TObject *Sender);
+	void __fastcall Localiserledossierbibliothque1Click(TObject *Sender);
+	void __fastcall Localiserledossierprojets1Click(TObject *Sender);
+	void __fastcall Localiserledossierdocumentation1Click(TObject *Sender);
+	void __fastcall SiteofficielPicaxe1Click(TObject *Sender);
+	void __fastcall lchargerlesdrivers1Click(TObject *Sender);
+	void __fastcall Localiserlesmodles1Click(TObject *Sender);
 private:	// Déclarations de l'utilisateur
 	TLabel * interLabel ;
 	TButton * interButton ;

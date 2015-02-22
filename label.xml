@@ -127,6 +127,30 @@
 				<EN>&Locate Scratch2</EN>
 			  </Caption>
 			</Ouvrir>
+			<Localiserledossierbibliothque1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser le dossier 'bibliothèque'</FR>
+				<EN>Locate folder 'librairie'</EN>
+			  </Caption>
+			</Localiserledossierbibliothque1>
+			<Localiserledossierprojets1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser le dossier 'projets'</FR>
+				<EN>Locate folder 'project'</EN>
+			  </Caption>
+			</Localiserledossierprojets1>
+			<Localiserledossierdocumentation1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser le dossier 'documentation'</FR>
+				<EN>Locate folder 'documentation'</EN>
+			  </Caption>
+			</Localiserledossierdocumentation1>
+			<Localiserlesmodles1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser les modèles</FR>
+				<EN>Locate templates</EN>
+			  </Caption>
+			</Localiserlesmodles1>
 			<Init type="TMenuItem">
 			  <Caption>
 				<FR>Réinitialiser les &paramètres</FR>
@@ -187,6 +211,18 @@
 				<EN>s2p official site</EN>
 			  </Caption>
 			</Siteofficieldes2p>
+			<SiteofficielPicaxe1 type="TMenuItem">
+			  <Caption>
+				<FR>Site officiel Picaxe</FR>
+				<EN>Picaxe official site</EN>
+			  </Caption>
+			</SiteofficielPicaxe1>
+			<lchargerlesdrivers1 type="TMenuItem">
+			  <Caption>
+				<FR>Télécharger les drivers</FR>
+				<EN>Download Picaxe drivers</EN>
+			  </Caption>
+			</lchargerlesdrivers1>
 			<Apropos1 type="TMenuItem">
 			  <Caption>
 				<FR>A propos</FR>

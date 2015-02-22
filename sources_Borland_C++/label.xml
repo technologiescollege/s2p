@@ -13,54 +13,54 @@
     <Langue index="EN" name="EnglishLang" default="0" />
   </Langues>
   <Labels>
-    <FenetrePrincipale type="TFenetrePrincipale">
+    <InterfaceS2P type="TInterfaceS2P">
       <Caption>
-        <FR>s2a : connexion Scratch2 - Arduino</FR>
-        <EN>s2a : connecting Scratch2Arduino</EN>
+        <FR>s2p : connexion Scratch2 - Picaxe</FR>
+        <EN>s2p : connecting Scratch2Picaxe</EN>
       </Caption>
-    </FenetrePrincipale>
-    <Label1 type="TLabel">
+    </InterfaceS2P>
+    <choixPicaxe type="TLabel">
       <Caption>
-        <FR>Votre carte Arduino</FR>
-        <EN>Your Arduino card</EN>
+        <FR>Picaxe choisi :</FR>
+        <EN>Picaxe selected:</EN>
       </Caption>
-    </Label1>
-    <Label2 type="TLabel">
-      <Caption>
-        <FR>est connectée sur</FR>
-        <EN>is connected as</EN>
-      </Caption>
-    </Label2>
-    <Label3 type="TLabel">
-      <Caption>
-        <FR>le port COM</FR>
-        <EN>COM port #</EN>
-      </Caption>
-    </Label3>
+    </choixPicaxe>
     <Label4 type="TLabel">
       <Caption>
-        <FR>La fenêtre se fermera s'il y a un problème de port</FR>
-        <EN>The pop-up window will close if there's a COM problem</EN>
+        <FR>La fenêtre vous indiquera</FR>
+        <EN>The popup window will point</EN>
       </Caption>
     </Label4>
+    <Label1 type="TLabel">
+      <Caption>
+        <FR>s'il y a un problème de port</FR>
+        <EN>if there's a port problem</EN>
+      </Caption>
+    </Label1>
     <Label5 type="TLabel">
       <Caption>
-        <FR>ou bien si la carte Arduino est mal programmée.</FR>
-        <EN>or if the Arduino card is not uploaded correctly.</EN>
+        <FR>ou bien si la carte Picaxe</FR>
+        <EN>or if the Picaxe card</EN>
       </Caption>
     </Label5>
-    <Button1 type="TButton">
+    <Label2 type="TLabel">
       <Caption>
-        <FR>Lancer s2a</FR>
-        <EN>Launch s2a</EN>
+        <FR>est mal programmée.</FR>
+        <EN>is not uploaded correctly.</EN>
       </Caption>
-    </Button1>
-    <Button2 type="TButton">
+    </Label2>
+    <lancer_s2p type="TButton">
+      <Caption>
+        <FR>Lancer s2p</FR>
+        <EN>Launch s2p</EN>
+      </Caption>
+    </lancer_s2p>
+    <lancer_scratch2 type="TButton">
       <Caption>
         <FR>Lancer Scratch2</FR>
         <EN>Launch Scratch2</EN>
       </Caption>
-    </Button2>
+    </lancer_scratch2>
     <ScratchEnLigne type="TButton">
       <Caption>
         <FR>Scratch2 en ligne</FR>
@@ -117,8 +117,8 @@
     </Outils1>
 			<Gestionnairedepriphriques1 type="TMenuItem">
 			  <Caption>
-				<FR>Gestionnaire de périphériques</FR>
-				<EN>Device management</EN>
+				<FR>Gestio&nnaire de périphériques</FR>
+				<EN>Device ma&nagement</EN>
 			  </Caption>
 			</Gestionnairedepriphriques1>
 			<Ouvrir type="TMenuItem">
@@ -127,22 +127,52 @@
 				<EN>&Locate Scratch2</EN>
 			  </Caption>
 			</Ouvrir>
+			<Localiserledossierbibliothque1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser le dossier 'bibliothèque'</FR>
+				<EN>Locate folder 'librairie'</EN>
+			  </Caption>
+			</Localiserledossierbibliothque1>
+			<Localiserledossierprojets1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser le dossier 'projets'</FR>
+				<EN>Locate folder 'project'</EN>
+			  </Caption>
+			</Localiserledossierprojets1>
+			<Localiserledossierdocumentation1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser le dossier 'documentation'</FR>
+				<EN>Locate folder 'documentation'</EN>
+			  </Caption>
+			</Localiserledossierdocumentation1>
+			<Localiserlesmodles1 type="TMenuItem">
+			  <Caption>
+				<FR>Localiser les modèles</FR>
+				<EN>Locate templates</EN>
+			  </Caption>
+			</Localiserlesmodles1>
+			<Init type="TMenuItem">
+			  <Caption>
+				<FR>Réinitialiser les &paramètres</FR>
+				<EN>Initialise &parameters</EN>
+			  </Caption>
+			</Init>			
     <Documentation1 type="TMenuItem">
       <Caption>
         <FR>&Documentation</FR>
         <EN>&Documentation</EN>
       </Caption>
     </Documentation1>
-			<PrparerArduino1 type="TMenuItem">
+			<PrparerPicaxe type="TMenuItem">
 			  <Caption>
-				<FR>&1. Préparer la carte Arduino</FR>
-				<EN>&1. prepare Arduino card</EN>
+				<FR>&1. Préparer la carte Picaxe</FR>
+				<EN>&1. prepare Picaxe card</EN>
 			  </Caption>
-			</PrparerArduino1>
+			</PrparerPicaxe>
 			<Utilisation1 type="TMenuItem">
 			  <Caption>
-				<FR>&2. Utilisation de s2a</FR>
-				<EN>&2. how to use s2a</EN>
+				<FR>&2. Utilisation de s2p</FR>
+				<EN>&2. how to use s2p</EN>
 			  </Caption>
 			</Utilisation1>
 			<N4Principesdeprogrammation1 type="TMenuItem">
@@ -154,15 +184,9 @@
 			<N3Mmentodescommandes1 type="TMenuItem">
 			  <Caption>
 				<FR>&4. Mémento des commandes</FR>
-				<EN>&4. s2a command summary</EN>
+				<EN>&4. s2p command summary</EN>
 			  </Caption>
 			</N3Mmentodescommandes1>
-    <AllerplusloinBlocklyDuino1 type="TMenuItem">
-      <Caption>
-        <FR>Aller plus loin avec &BlocklyDuino</FR>
-        <EN>Learn furthermore with &BlocklyDuino</EN>
-      </Caption>
-    </AllerplusloinBlocklyDuino1>
     <Aide1 type="TMenuItem">
       <Caption>
         <FR>&Aide</FR>
@@ -181,12 +205,24 @@
 				<EN>Github file</EN>
 			  </Caption>
 			</A_propos>
-			<Siteofficieldes2a1 type="TMenuItem">
+			<Siteofficieldes2p type="TMenuItem">
 			  <Caption>
-				<FR>Site officiel de s2a</FR>
-				<EN>s2a official site</EN>
+				<FR>Site officiel de s2p</FR>
+				<EN>s2p official site</EN>
 			  </Caption>
-			</Siteofficieldes2a1>
+			</Siteofficieldes2p>
+			<SiteofficielPicaxe1 type="TMenuItem">
+			  <Caption>
+				<FR>Site officiel Picaxe</FR>
+				<EN>Picaxe official site</EN>
+			  </Caption>
+			</SiteofficielPicaxe1>
+			<lchargerlesdrivers1 type="TMenuItem">
+			  <Caption>
+				<FR>Télécharger les drivers</FR>
+				<EN>Download Picaxe drivers</EN>
+			  </Caption>
+			</lchargerlesdrivers1>
 			<Apropos1 type="TMenuItem">
 			  <Caption>
 				<FR>A propos</FR>

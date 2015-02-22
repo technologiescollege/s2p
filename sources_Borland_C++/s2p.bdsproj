@@ -197,7 +197,7 @@
         <FILE FILENAME="s2a.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="s2a.res" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="s2p.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="s2p" FORMNAME="InterfaceS2P" DESIGNCLASS="" ADDITIONAL="s2p.h"/>
         <FILE FILENAME="GestionLangue.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="GestionLangue" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="GestionLangue.h" CONTAINERID="" LOCALCOMMAND=""/>
+        <FILE FILENAME="GestionLangue.h" CONTAINERID="" LOCALCOMMAND="" UNITNAME="" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="tinyxml\tinystr.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="tinystr" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="tinyxml\tinyxml.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="tinyxml" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="tinyxml\tinyxmlerror.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="tinyxmlerror" FORMNAME="" DESIGNCLASS=""/>
@@ -208,7 +208,7 @@
           <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
           <VersionInfo Name="AutoIncBuild">False</VersionInfo>
           <VersionInfo Name="MajorVer">2</VersionInfo>
-          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="MinorVer">1</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
           <VersionInfo Name="Build">0</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
@@ -222,13 +222,13 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName">WorldCompany</VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription">Lien Scratch2 &lt;-&gt; s2p &lt;-&gt; Picaxe</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">2.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">2.1.0.0</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName">Lien Scratch2 &lt;-&gt; s2p &lt;-&gt; Picaxe</VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright">Sébastien Canet</VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks">CC-BY-NC</VersionInfoKeys>
           <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
           <VersionInfoKeys Name="ProductName">s2p</VersionInfoKeys>
-          <VersionInfoKeys Name="ProductVersion">2.0</VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">2.1</VersionInfoKeys>
           <VersionInfoKeys Name="Comments"></VersionInfoKeys>
         </VersionInfoKeys>
         <Debugging>
@@ -267,6 +267,7 @@
         </Linker>
       </IDEOPTIONS>
     </BCBPROJECT>
-		<buildevents/>  <Folders/>
-  </CPlusPlusBuilder.Personality>
+		<buildevents/>
+		<Folders/>
+	</CPlusPlusBuilder.Personality>
 </BorlandProject>

@@ -1150,10 +1150,29 @@ object InterfaceS2P: TInterfaceS2P
         Caption = 'Gestionnaire de p'#233'riph'#233'riques'
         OnClick = Gestionnairedepriphriques1Click
       end
+      object N6: TMenuItem
+        Caption = '-'
+      end
       object Ouvrir: TMenuItem
         Caption = '&Localiser Scratch 2'
         Hint = 'Parcourir le disque dur pour la version hors ligne de Scratch2'
         OnClick = OuvrirClick
+      end
+      object Localiserledossierbibliothque1: TMenuItem
+        Caption = 'Localiser le dossier '#39'biblioth'#232'que'#39
+        OnClick = Localiserledossierbibliothque1Click
+      end
+      object Localiserledossierprojets1: TMenuItem
+        Caption = 'Localiser le dossier '#39'projets'#39
+        OnClick = Localiserledossierprojets1Click
+      end
+      object Localiserledossierdocumentation1: TMenuItem
+        Caption = 'Localiser le dossier '#39'documentation'#39
+        OnClick = Localiserledossierdocumentation1Click
+      end
+      object Localiserlesmodles1: TMenuItem
+        Caption = 'Localiser les mod'#232'les'
+        OnClick = Localiserlesmodles1Click
       end
       object N5: TMenuItem
         Caption = '-'
@@ -1205,6 +1224,14 @@ object InterfaceS2P: TInterfaceS2P
         Caption = 'Site officiel de s2p'
         OnClick = Siteofficieldes2pClick
       end
+      object SiteofficielPicaxe1: TMenuItem
+        Caption = 'Site officiel Picaxe'
+        OnClick = SiteofficielPicaxe1Click
+      end
+      object lchargerlesdrivers1: TMenuItem
+        Caption = 'T'#233'l'#233'charger les drivers'
+        OnClick = lchargerlesdrivers1Click
+      end
       object N1: TMenuItem
         Caption = '-'
       end
@@ -1219,5 +1246,9 @@ object InterfaceS2P: TInterfaceS2P
     Filter = 'Scratch 2.exe'
     Options = [ofHideReadOnly, ofNoChangeDir, ofFileMustExist, ofEnableSizing]
     Left = 496
+  end
+  object OpenDialog: TOpenDialog
+    Left = 496
+    Top = 80
   end
 end
