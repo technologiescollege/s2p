@@ -10,7 +10,9 @@ Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des 
 ![](https://github.com/technologiescollege/s2p/raw/master/aide/Capture_s2p_EXE.JPG)
 
 ###Version 2.1 du 22 février 2015
-Rajout de la possibilité de sélectionner les dossiers utilisés pour afficher les documentations, fichiers exemples, etc
+Rajout de la possibilité de sélectionner les dossiers utilisés pour afficher les documentations, fichiers exemples, etc.
+Il est donc possible de modifier les préférences en éditant le fichier 's2a.ini' mais aussi par l'interface graphique.
+_Pensez à relancer le logiciel après._
 
 ###Version 2.0 du 23 décembre 2014
 Ca y est ! Tout est fini ! Nouveautés :
