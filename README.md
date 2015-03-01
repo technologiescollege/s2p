@@ -11,6 +11,9 @@ Toutes les informations sur le site officiel : [http://www.picaxe.com/Software/T
 Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des exemples et une interface pour tout gérer, ou faire gérer par des enfants de façon simple :
 ![](https://github.com/technologiescollege/s2p/raw/master/aide/Capture_s2p_EXE.JPG)
 
+###Version 2.1.8 du 1er mars 2015
+La numérotation mineure sera synchronisée avec le numéro de version officiel de s2p (_actuellement en v0.0.8_) qui ne cesse de s'améliorer. N'hésitez pas à leur poster tous les bugs que vous y rencontrez.
+
 ###Version 2.1 du 22 février 2015
 Rajout de la possibilité de sélectionner les dossiers utilisés pour afficher les documentations, fichiers exemples, etc.
 Il est donc possible de modifier les préférences en éditant le fichier 's2p.ini' mais aussi par l'interface graphique.
