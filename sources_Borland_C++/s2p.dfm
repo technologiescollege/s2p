@@ -1061,7 +1061,7 @@ object InterfaceS2P: TInterfaceS2P
     ParentFont = False
   end
   object choixPicaxe: TLabel
-    Left = 62
+    Left = 42
     Top = 166
     Width = 104
     Height = 22
@@ -1121,9 +1121,26 @@ object InterfaceS2P: TInterfaceS2P
     Width = 145
     Height = 30
     Style = csDropDownList
-    ItemHeight = 22
+    ItemHeight = 0
     TabOrder = 3
     OnChange = ComboBoxChange
+  end
+  object Popup: TComboBox
+    Left = 21
+    Top = 184
+    Width = 145
+    Height = 30
+    Enabled = False
+    ItemHeight = 22
+    TabOrder = 4
+    Text = 'Popup'
+    Visible = False
+    Items.Strings = (
+      'Le fichier scratch2.bat n'#39'existe pas.'
+      'Le fichier scratch2.bat n'#39'existe pas.'
+      
+        'Interface r'#233'alis'#233'e par S'#233'bastien Canet, d'#233'cembre 2014. - v2.1.8 ' +
+        'index'#233'e sur la version de S2P"')
   end
   object MainMenu1: TMainMenu
     Left = 496

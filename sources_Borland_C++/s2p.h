@@ -64,6 +64,7 @@ __published:	// Composants gérés par l'EDI
 	TMenuItem *lchargerlesdrivers1;
 	TOpenDialog *OpenDialog;
 	TMenuItem *Localiserlesmodles1;
+	TComboBox *Popup;
 	void __fastcall A_proposClick(TObject *Sender);
 	void __fastcall PrparerPicaxeClick(TObject *Sender);
 	void __fastcall Utilisation1Click(TObject *Sender);

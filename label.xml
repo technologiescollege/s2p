@@ -14,7 +14,14 @@
 	<Langue index="ES" name="SpanishLang" default="0" />
   </Langues>
   <Labels>
-    <InterfaceS2P type="TInterfaceS2P">
+    <Popup type="TComboBox">
+      <Items>
+        <FR>Le fichier scratch2.bat n'existe pas.\Le fichier scratch2.bat n'existe pas.\Interface réalisée par Sébastien Canet, décembre 2014 - v2.1.8 indexée sur la version de S2P</FR>
+        <EN>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.1.8 with version of s2p Revolution Education</EN>
+		<ES>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.1.8 - mai 2015</ES>
+      </Items>
+    </Popup>
+	<InterfaceS2P type="TInterfaceS2P">
       <Caption>
         <FR>s2p : connexion Scratch2 - Picaxe</FR>
         <EN>s2p : connecting Scratch2Picaxe</EN>
