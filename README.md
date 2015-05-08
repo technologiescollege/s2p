@@ -8,8 +8,10 @@ Le logiciel S2P officiel permet d'injecter le firmware adéquat dans le micro co
 
 Toutes les informations sur le site officiel : [http://www.picaxe.com/Software/Third-Party/Scratch/](http://www.picaxe.com/Software/Third-Party/Scratch/).
 
-Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des exemples et une interface pour tout gérer, ou faire gérer par des enfants de façon simple :
-![](https://raw.githubusercontent.com/technologiescollege/s2p/master/s2p/datasheets/Capture_s2p_EXE.JPG)
+Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des exemples et une interface pour tout gérer, ou faire gérer par des enfants de façon simple.
+
+###Version 2.1.8.1 du 8 mai 2015
+Rajout de traductions qui m'avaient échappées.
 
 ###Version 2.1.8 du 1er mars 2015
 La numérotation mineure sera synchronisée avec le numéro de version officiel de s2p (_actuellement en v0.0.8_) qui ne cesse de s'améliorer. N'hésitez pas à leur poster tous les bugs que vous y rencontrez.
