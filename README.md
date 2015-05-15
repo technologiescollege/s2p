@@ -12,9 +12,7 @@ Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des 
 
 ###Version 2.2.9 du 15 mai 2015
 Mise à jour du s2p officiel en version 0.0.9.
-
 Rajout des pilotes.
-
 Harmonisation des menus avec les interfaces 2.2.x de [s2a](https://github.com/technologiescollege/s2a_fr) et [Xi](https://github.com/technologiescollege/XiDuino-Windows-Portable)
 
 ###Version 2.1.8.1 du 8 mai 2015
