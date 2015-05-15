@@ -65,6 +65,11 @@ __published:	// Composants gérés par l'EDI
 	TOpenDialog *OpenDialog;
 	TMenuItem *Localiserlesmodles1;
 	TComboBox *Popup;
+	TMenuItem *InstallDrivers;
+	TMenuItem *Locate;
+	TMenuItem *Drivers;
+	TMenuItem *Links;
+	TMenuItem *N7;
 	void __fastcall A_proposClick(TObject *Sender);
 	void __fastcall PrparerPicaxeClick(TObject *Sender);
 	void __fastcall Utilisation1Click(TObject *Sender);
@@ -93,6 +98,8 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall SiteofficielPicaxe1Click(TObject *Sender);
 	void __fastcall lchargerlesdrivers1Click(TObject *Sender);
 	void __fastcall Localiserlesmodles1Click(TObject *Sender);
+	void __fastcall InstallDriversClick(TObject *Sender);
+	void __fastcall DriversClick(TObject *Sender);
 private:	// Déclarations de l'utilisateur
 	TLabel * interLabel ;
 	TButton * interButton ;

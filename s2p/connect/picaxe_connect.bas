@@ -1,7 +1,7 @@
 
 ; *****************************************************************************
 ; *                                                                           *
-; * PICAXE Connect Program                                              021   *
+; * PICAXE Connect Program                                              028   *
 ; *                                                                           *
 ; *****************************************************************************
 ; *                                                                           *
@@ -48,11 +48,17 @@
 ; *     0.20    JB  I2C READI2C 6-byte return. Fixed bug in testing code      *
 ; *     0.21    JB  I2C READI2C compile bug fixed                             *
 ; *     0.22    CPS Added RESETOUTPUTS outputs reset                          *
+; *     0.23    JB  Added ReadEeprom and WriteEeprom                          *
+; *     0.24    JB  Added Infrared+1 sensor - No actual code change           *
+; *     0.25    JB  Added D for Display On LCD                                *
+; *     0.26    JB  Fixed baudrate for LCD output                             *
+; *     0.27    JB  Added INFRAIN+1                                           *
+; *     0.28    JB  Removed INFRAIN+1                                         *
 ; *                                                                           *
 ; *****************************************************************************
 
   Symbol VERSION_MAJOR = 0
-  Symbol VERSION_MINOR = 22
+  Symbol VERSION_MINOR = 28
 
 ; .---------------------------------------------------------------------------.
 ; | Define the PICAXE type during testing                                     |
@@ -186,6 +192,7 @@
     Symbol FREQ            = M16
     Symbol FREQ_DEFAULT    = M4
     Symbol FREQ_MULTIPLIER = 4
+    Symbol FREQ_N2400      = N2400_16
     #Define _isOK
   #EndIf
 
@@ -193,6 +200,7 @@
     Symbol FREQ            = M16
     Symbol FREQ_DEFAULT    = M8
     Symbol FREQ_MULTIPLIER = 2
+    Symbol FREQ_N2400      = N2400_16
     #Define _isOK
   #EndIf
 
@@ -640,6 +648,7 @@ WaitForCommand:
     Case "?" ; Polling Query
 
     Case "C" : Goto    CountCommand
+    Case "D" : Goto    DisplayOnLcdCommand
     Case "G" : Goto    GetPinCommand
     Case "H" : High    w1
     Case "I" : IrOut   w1, w2.msb, w2.lsb
@@ -655,8 +664,10 @@ WaitForCommand:
 
     Case "a" : Goto    SetPinAs
     Case "b" : Goto    I2cBlockCommand
+    Case "g" : Goto    ReadEeprom         ; "get eeprom"
     Case "h" : Goto    ReadTempCommand
     Case "i" : Goto    IrInCommand
+    Case "p" : Goto    WriteEeprom        ; "put eeprom"
     Case "r" : Goto    I2cEepromRead
     Case "s" : Goto    I2cEepromSetup
     Case "t" : Goto    TouchCommand
@@ -1174,7 +1185,7 @@ EchoBackCommand:
       ' -1------ = output
       ' --0----- = digital
       ' --1----- = analogue
-      ' -----nnn = type
+      ' ----nnnn = type
 
       ' 00000000 = unconfigured
       ' 11000001 = output
@@ -1184,6 +1195,7 @@ EchoBackCommand:
       ' 10000101 = unltrasonic
       ' 10000110 = infrared
       ' 10000111 = touch
+      ' 10001000 = infrared+1
 ; |                                                                           |
 ; `---------------------------------------------------------------------------'
 
@@ -1233,6 +1245,27 @@ CountCommand:
 
   SerTxd( "COUNT" )
   Goto ShowPinPlusResult
+
+; *****************************************************************************
+; *                                                                           *
+; * Output to an LCD attached to a pin                                        *
+; *                                                                           *
+; *****************************************************************************
+; *                                                                           *
+; *  Parameter w1 is pin, w2.msb/w2.lsb are the bytes to send -               *
+; *                                                                           *
+; *  128 xxx - Set position then send character byte to LCD                   *
+; *    0 xxx - Sent as a character byte to the LCD                            *
+; *                                                                           *
+; *****************************************************************************
+
+DisplayOnLcdCommand:
+
+  If w2.msb <> 0 Then
+    SerOut w1, FREQ_N2400, ( 254, w2.msb )
+  End If
+  SerOut w1, FREQ_N2400, ( w2.lsb )
+  Goto Polling
 
 ; *****************************************************************************
 ; *                                                                           *
@@ -1561,6 +1594,41 @@ UltraCommand:
   SerTxd( "ULTRA" )
   Goto ShowPinPlusResult
 
+; *****************************************************************************
+; *                                                                           *
+; * Read internal Eeprom                                                      *
+; *                                                                           *
+; *****************************************************************************
+; *                                                                           *
+; * The reply packet will have the format of -                                *
+; *                                                                           *
+; *     [EEPROM <addess>=<value>]                                             *
+; *                                                                           *
+; * Where *                                                                   *
+; *                                                                           *
+; *     <address>     Is the address of the Eeprom read                       *
+; *                                                                           *
+; *     <value>       Is the byte value read from the address                 *
+; *                                                                           *
+; *****************************************************************************
+
+ReadEeprom:
+
+  Read w1, w2
+
+  SerTxd( "EEPROM", SPACE, #w1 )
+  Goto ShowResult
+
+; *****************************************************************************
+; *                                                                           *
+; * Write internal Eeprom                                                     *
+; *                                                                           *
+; *****************************************************************************
+
+WriteEeprom:
+
+  Write w1, w2
+  Goto Polling
 
 ; *****************************************************************************
 ; *                                                                           *
@@ -1595,7 +1663,7 @@ ResetOutputs:
   #EndIf
 
   Goto Polling
-  
+
 ; *****************************************************************************
 ; *                                                                           *
 ; * I2C Interfacing Commands                                                  *

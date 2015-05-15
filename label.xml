@@ -16,9 +16,9 @@
   <Labels>
     <Popup type="TComboBox">
       <Items>
-        <FR>Le fichier scratch2.bat n'existe pas.\Le fichier scratch2.bat n'existe pas.\Interface réalisée par Sébastien Canet, décembre 2014 - v2.1.8 indexée sur la version de S2P</FR>
-        <EN>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.1.8 with version of s2p Revolution Education</EN>
-		<ES>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.1.8 - mai 2015</ES>
+        <FR>Le fichier scratch2.bat n'existe pas.\Le fichier scratch2.bat n'existe pas.\Interface réalisée par Sébastien Canet, décembre 2014 - v2.2.9 indexée sur la version de S2P</FR>
+        <EN>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.2.9 with version of s2p Revolution Education</EN>
+		<ES>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.2.9 - mai 2015</ES>
       </Items>
     </Popup>
 	<InterfaceS2P type="TInterfaceS2P">
@@ -154,41 +154,62 @@
 				<ES>Gestio&n de periféricos</ES>
 			  </Caption>
 			</Gestionnairedepriphriques1>
-			<Ouvrir type="TMenuItem">
+			<InstallDrivers type="TMenuItem">
 			  <Caption>
-				<FR>&Localiser Scratch 2</FR>
-				<EN>&Locate Scratch2</EN>
-				<ES>&Localizar Scratch2</ES>
+				<FR>&Installer les pilotes</FR>
+				<EN>&Install drivers</EN>
+				<ES>&Install drivers</ES>
 			  </Caption>
-			</Ouvrir>
-			<Localiserledossierbibliothque1 type="TMenuItem">
+			</InstallDrivers>
+			<Locate type="TMenuItem">
 			  <Caption>
-				<FR>Localiser le dossier 'bibliothèque'</FR>
-				<EN>Locate folder 'librairie'</EN>
-				<ES>Localizar carpeta de 'librerias'</ES>
+				<FR>&Localiser les dossiers</FR>
+				<EN>&Locate folders</EN>
+				<ES>&Locate folders</ES>
 			  </Caption>
-			</Localiserledossierbibliothque1>
-			<Localiserledossierprojets1 type="TMenuItem">
-			  <Caption>
-				<FR>Localiser le dossier 'projets'</FR>
-				<EN>Locate folder 'project'</EN>
-				<ES>Localizar carpeta de 'proyectos'</ES>
-			  </Caption>
-			</Localiserledossierprojets1>
-			<Localiserledossierdocumentation1 type="TMenuItem">
-			  <Caption>
-				<FR>Localiser le dossier 'documentation'</FR>
-				<EN>Locate folder 'documentation'</EN>
-				<ES>Localizar carpeta de 'documentacion'</ES>
-			  </Caption>
-			</Localiserledossierdocumentation1>
-			<Localiserlesmodles1 type="TMenuItem">
-			  <Caption>
-				<FR>Localiser les modèles</FR>
-				<EN>Locate templates</EN>
-				<ES>Localizar modelos</ES>
-			  </Caption>
-			</Localiserlesmodles1>
+			</Locate>
+					<Ouvrir type="TMenuItem">
+					  <Caption>
+						<FR>Localiser Scratch 2</FR>
+						<EN>Locate Scratch2</EN>
+						<ES>Localizar Scratch2</ES>
+					  </Caption>
+					</Ouvrir>
+					<Localiserledossierbibliothque1 type="TMenuItem">
+					  <Caption>
+						<FR>Localiser le dossier 'bibliothèque'</FR>
+						<EN>Locate folder 'librairie'</EN>
+						<ES>Localizar carpeta de 'librerias'</ES>
+					  </Caption>
+					</Localiserledossierbibliothque1>
+					<Localiserledossierprojets1 type="TMenuItem">
+					  <Caption>
+						<FR>Localiser le dossier 'projets'</FR>
+						<EN>Locate folder 'project'</EN>
+						<ES>Localizar carpeta de 'proyectos'</ES>
+					  </Caption>
+					</Localiserledossierprojets1>
+					<Localiserledossierdocumentation1 type="TMenuItem">
+					  <Caption>
+						<FR>Localiser le dossier 'documentation'</FR>
+						<EN>Locate folder 'documentation'</EN>
+						<ES>Localizar carpeta de 'documentacion'</ES>
+					  </Caption>
+					</Localiserledossierdocumentation1>
+					<Localiserlesmodles1 type="TMenuItem">
+					  <Caption>
+						<FR>Localiser les modèles</FR>
+						<EN>Locate templates</EN>
+						<ES>Localizar modelos</ES>
+					  </Caption>
+					</Localiserlesmodles1>
+					<Drivers type="TMenuItem">
+					  <Caption>
+						<FR>Ouvrir le dossier 'pilotes'</FR>
+						<EN>Open 'drivers' folder</EN>
+						<ES>Open 'drivers' folder</ES>
+					  </Caption>
+					</Drivers>
 			<Init type="TMenuItem">
 			  <Caption>
 				<FR>Réinitialiser les &paramètres</FR>
@@ -203,6 +224,13 @@
 		<ES>&Documentacion</ES>
       </Caption>
     </Documentation1>
+    <Aide1 type="TMenuItem">
+      <Caption>
+        <FR>&Aide</FR>
+        <EN>&Help</EN>
+		<ES>&Ayuda</ES>
+      </Caption>
+    </Aide1>
 			<PrparerPicaxe type="TMenuItem">
 			  <Caption>
 				<FR>&1. Préparer la carte Picaxe</FR>
@@ -231,54 +259,54 @@
 				<ES>&4. Sumari de comandos s2p</ES>
 			  </Caption>
 			</N3Mmentodescommandes1>
-    <Aide1 type="TMenuItem">
-      <Caption>
-        <FR>&Aide</FR>
-        <EN>&Help</EN>
-		<ES>&Ayuda</ES>
-      </Caption>
-    </Aide1>
-			<Wiki1 type="TMenuItem">
+			<Links type="TMenuItem">
 			  <Caption>
-				<FR>Wiki</FR>
-				<EN>Wiki</EN>
-				<ES>Wiki</ES>
+				<FR>&Liens</FR>
+				<EN>&Links</EN>
+				<ES>&Links</ES>
 			  </Caption>
-			</Wiki1>
-			<A_propos type="TMenuItem">
-			  <Caption>
-				<FR>Fichiers source</FR>
-				<EN>Github file</EN>
-				<ES>Ficheros fuente</ES>
-			  </Caption>
-			</A_propos>
-			<Siteofficieldes2p type="TMenuItem">
-			  <Caption>
-				<FR>Site officiel de s2p</FR>
-				<EN>s2p official site</EN>
-				<ES>Sitio oficial de s2p</ES>
-			  </Caption>
-			</Siteofficieldes2p>
-			<SiteofficielPicaxe1 type="TMenuItem">
-			  <Caption>
-				<FR>Site officiel Picaxe</FR>
-				<EN>Picaxe official site</EN>
-				<ES>Sitio oficial de Picaxe</ES>
-			  </Caption>
-			</SiteofficielPicaxe1>
-			<lchargerlesdrivers1 type="TMenuItem">
-			  <Caption>
-				<FR>Télécharger les drivers</FR>
-				<EN>Download Picaxe drivers</EN>
-				<ES>Cargar Drivers de Picaxe</ES>
-			  </Caption>
-			</lchargerlesdrivers1>
-			<Apropos1 type="TMenuItem">
-			  <Caption>
-				<FR>A propos</FR>
-				<EN>About</EN>
-				<ES>Acerca de</ES>
-			  </Caption>
-			</Apropos1>
+			</Links>
+					<Wiki1 type="TMenuItem">
+					  <Caption>
+						<FR>Wiki</FR>
+						<EN>Wiki</EN>
+						<ES>Wiki</ES>
+					  </Caption>
+					</Wiki1>
+					<A_propos type="TMenuItem">
+					  <Caption>
+						<FR>Fichiers source</FR>
+						<EN>Github file</EN>
+						<ES>Ficheros fuente</ES>
+					  </Caption>
+					</A_propos>
+					<Siteofficieldes2p type="TMenuItem">
+					  <Caption>
+						<FR>Site officiel de s2p</FR>
+						<EN>s2p official site</EN>
+						<ES>Sitio oficial de s2p</ES>
+					  </Caption>
+					</Siteofficieldes2p>
+					<SiteofficielPicaxe1 type="TMenuItem">
+					  <Caption>
+						<FR>Site officiel Picaxe</FR>
+						<EN>Picaxe official site</EN>
+						<ES>Sitio oficial de Picaxe</ES>
+					  </Caption>
+					</SiteofficielPicaxe1>
+					<lchargerlesdrivers1 type="TMenuItem">
+					  <Caption>
+						<FR>Télécharger les drivers</FR>
+						<EN>Download Picaxe drivers</EN>
+						<ES>Cargar Drivers de Picaxe</ES>
+					  </Caption>
+					</lchargerlesdrivers1>
+	<Apropos1 type="TMenuItem">
+	  <Caption>
+		<FR>A propos</FR>
+		<EN>About</EN>
+		<ES>Acerca de</ES>
+	  </Caption>
+	</Apropos1>
   </Labels>
 </Traductions>

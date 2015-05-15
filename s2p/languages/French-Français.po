@@ -300,7 +300,7 @@ msgid "Open"
 msgstr "Ouvrir"
 
 msgid "Open Device Manager"
-msgstr "Ouvrit le gestionnaire de périphériques"
+msgstr "Ouvrir le gestionnaire de périphériques"
 
 msgid "Open Scratch Program File"
 msgstr "Ouvrir le fichier de programme Scratch"

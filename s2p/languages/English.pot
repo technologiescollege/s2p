@@ -111,6 +111,9 @@ msgstr ""
 msgid "Communications with PICAXE were disconnected"
 msgstr ""
 
+msgid "Connect"
+msgstr ""
+
 msgid "Connect power now ..."
 msgstr ""
 
@@ -157,6 +160,9 @@ msgid "Could not get the name of this device: %1"
 msgstr ""
 
 msgid "Could not open language file"
+msgstr ""
+
+msgid "Disconnect"
 msgstr ""
 
 msgid "Documents folder does not exist"
@@ -574,6 +580,94 @@ msgstr ""
 
 # For template file
 msgid "motor D"
+msgstr ""
+
+# For template file
+msgid "motor E"
+msgstr ""
+
+# For template file
+msgid "motor F"
+msgstr ""
+
+# For template file
+msgid "motor G"
+msgstr ""
+
+# For template file
+msgid "motor H"
+msgstr ""
+
+# For template file
+msgid "motor I"
+msgstr ""
+
+# For template file
+msgid "motor J"
+msgstr ""
+
+# For template file
+msgid "motor K"
+msgstr ""
+
+# For template file
+msgid "motor L"
+msgstr ""
+
+# For template file
+msgid "motor M"
+msgstr ""
+
+# For template file
+msgid "motor N"
+msgstr ""
+
+# For template file
+msgid "motor O"
+msgstr ""
+
+# For template file
+msgid "motor P"
+msgstr ""
+
+# For template file
+msgid "motor Q"
+msgstr ""
+
+# For template file
+msgid "motor R"
+msgstr ""
+
+# For template file
+msgid "motor S"
+msgstr ""
+
+# For template file
+msgid "motor T"
+msgstr ""
+
+# For template file
+msgid "motor U"
+msgstr ""
+
+# For template file
+msgid "motor V"
+msgstr ""
+
+# For template file
+msgid "motor W"
+msgstr ""
+
+# For template file
+msgid "motor X"
+msgstr ""
+
+# For template file
+msgid "motor Y"
+msgstr ""
+
+# For template file
+msgid "motor Z"
 msgstr ""
 
 # For template file
@@ -1099,10 +1193,10 @@ msgstr ""
 msgid "set color %m.color"
 msgstr ""
 
-msgid "set color red: %n green: %n blue: %n  for %n secs"
+msgid "set color R: %n G: %n B: %n  for %n secs"
 msgstr ""
 
-msgid "set color red: %n green: %n blue: %n"
+msgid "set color R: %n G: %n B: %n"
 msgstr ""
 
 msgid "set heading %n"
@@ -1178,6 +1272,142 @@ msgid "S2Bot plugin not communicating with EV3"
 msgstr ""
 
 msgid "EV3 Connected"  
+msgstr ""
+
+msgid "set motion timeout to %m.motionTimeout seconds"
+msgstr ""
+
+# For template file
+msgid "sensorA"
+msgstr ""
+
+# For template file
+msgid "sensorB"
+msgstr ""
+
+# For template file
+msgid "sensorC"
+msgstr ""
+
+# For template file
+msgid "sensorD"
+msgstr ""
+
+# For template file
+msgid "sensorE"
+msgstr ""
+
+# For template file
+msgid "sensorF"
+msgstr ""
+
+# For template file
+msgid "sensorG"
+msgstr ""
+
+# For template file
+msgid "sensorH"
+msgstr ""
+
+# For template file
+msgid "sensorI"
+msgstr ""
+
+# For template file
+msgid "sensorJ"
+msgstr ""
+
+# For template file
+msgid "sensorK"
+msgstr ""
+
+# For template file
+msgid "sensorL"
+msgstr ""
+
+# For template file
+msgid "sensorM"
+msgstr ""
+
+# For template file
+msgid "sensorN"
+msgstr ""
+
+# For template file
+msgid "sensorO"
+msgstr ""
+
+# For template file
+msgid "sensorP"
+msgstr ""
+
+# For template file
+msgid "sensorQ"
+msgstr ""
+
+# For template file
+msgid "sensorR"
+msgstr ""
+
+# For template file
+msgid "sensorS"
+msgstr ""
+
+# For template file
+msgid "sensorT"
+msgstr ""
+
+# For template file
+msgid "sensorU"
+msgstr ""
+
+# For template file
+msgid "sensorV"
+msgstr ""
+
+# For template file
+msgid "sensorW"
+msgstr ""
+
+# For template file
+msgid "sensorX"
+msgstr ""
+
+# For template file
+msgid "sensorY"
+msgstr ""
+
+# For template file
+msgid "sensorZ"
+msgstr ""
+
+
+# For template file
+msgid "output to LCD on %m.outputPin %m.lineNumber %s"
+msgstr ""
+
+# For template file
+msgid "wait for IR on input %m.inputPin"
+msgstr ""
+
+# For template file
+msgid "wait for TV IR on input %m.inputPin"
+msgstr ""
+
+# For template file
+msgid "BASIC %s"
+msgstr ""
+
+# For template file
+msgid "IR"
+msgstr ""
+
+# For template file
+msgid "line1"
+msgstr ""
+
+# For template file
+msgid "line2"
 msgstr ""
 
 

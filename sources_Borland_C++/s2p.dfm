@@ -2,7 +2,7 @@ object InterfaceS2P: TInterfaceS2P
   Left = 0
   Top = 0
   Caption = 's2p : connexion Scratch2 - Picaxe'
-  ClientHeight = 196
+  ClientHeight = 200
   ClientWidth = 521
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
@@ -1121,7 +1121,7 @@ object InterfaceS2P: TInterfaceS2P
     Width = 145
     Height = 30
     Style = csDropDownList
-    ItemHeight = 0
+    ItemHeight = 22
     TabOrder = 3
     OnChange = ComboBoxChange
   end
@@ -1139,7 +1139,7 @@ object InterfaceS2P: TInterfaceS2P
       'Le fichier scratch2.bat n'#39'existe pas.'
       'Le fichier scratch2.bat n'#39'existe pas.'
       
-        'Interface r'#233'alis'#233'e par S'#233'bastien Canet, d'#233'cembre 2014. - v2.1.8 ' +
+        'Interface r'#233'alis'#233'e par S'#233'bastien Canet, d'#233'cembre 2014. - v2.2.9 ' +
         'index'#233'e sur la version de S2P"')
   end
   object MainMenu1: TMainMenu
@@ -1167,29 +1167,40 @@ object InterfaceS2P: TInterfaceS2P
         Caption = 'Gestionnaire de p'#233'riph'#233'riques'
         OnClick = Gestionnairedepriphriques1Click
       end
+      object InstallDrivers: TMenuItem
+        Caption = 'Installer les pilotes'
+        OnClick = InstallDriversClick
+      end
       object N6: TMenuItem
         Caption = '-'
       end
-      object Ouvrir: TMenuItem
-        Caption = '&Localiser Scratch 2'
-        Hint = 'Parcourir le disque dur pour la version hors ligne de Scratch2'
-        OnClick = OuvrirClick
-      end
-      object Localiserledossierbibliothque1: TMenuItem
-        Caption = 'Localiser le dossier '#39'biblioth'#232'que'#39
-        OnClick = Localiserledossierbibliothque1Click
-      end
-      object Localiserledossierprojets1: TMenuItem
-        Caption = 'Localiser le dossier '#39'projets'#39
-        OnClick = Localiserledossierprojets1Click
-      end
-      object Localiserledossierdocumentation1: TMenuItem
-        Caption = 'Localiser le dossier '#39'documentation'#39
-        OnClick = Localiserledossierdocumentation1Click
-      end
-      object Localiserlesmodles1: TMenuItem
-        Caption = 'Localiser les mod'#232'les'
-        OnClick = Localiserlesmodles1Click
+      object Locate: TMenuItem
+        Caption = 'Localiser les dossiers'
+        object Ouvrir: TMenuItem
+          Caption = '&Localiser Scratch 2'
+          Hint = 'Parcourir le disque dur pour la version hors ligne de Scratch2'
+          OnClick = OuvrirClick
+        end
+        object Localiserledossierbibliothque1: TMenuItem
+          Caption = 'Localiser le dossier '#39'biblioth'#232'que'#39
+          OnClick = Localiserledossierbibliothque1Click
+        end
+        object Localiserledossierdocumentation1: TMenuItem
+          Caption = 'Localiser le dossier '#39'documentation'#39
+          OnClick = Localiserledossierdocumentation1Click
+        end
+        object Localiserledossierprojets1: TMenuItem
+          Caption = 'Localiser le dossier '#39'projets'#39
+          OnClick = Localiserledossierprojets1Click
+        end
+        object Localiserlesmodles1: TMenuItem
+          Caption = 'Localiser les mod'#232'les'
+          OnClick = Localiserlesmodles1Click
+        end
+        object Drivers: TMenuItem
+          Caption = 'Ouvrir le dossier '#39'pilotes'#39
+          OnClick = DriversClick
+        end
       end
       object N5: TMenuItem
         Caption = '-'
@@ -1226,28 +1237,34 @@ object InterfaceS2P: TInterfaceS2P
       object N4: TMenuItem
         Caption = '-'
       end
-      object Wiki1: TMenuItem
-        Caption = 'Wiki'
-        OnClick = Wiki1Click
-      end
-      object N2: TMenuItem
-        Caption = '-'
-      end
-      object A_propos: TMenuItem
-        Caption = 'Fichiers source'
-        OnClick = A_proposClick
-      end
-      object Siteofficieldes2p: TMenuItem
-        Caption = 'Site officiel de s2p'
-        OnClick = Siteofficieldes2pClick
-      end
-      object SiteofficielPicaxe1: TMenuItem
-        Caption = 'Site officiel Picaxe'
-        OnClick = SiteofficielPicaxe1Click
-      end
-      object lchargerlesdrivers1: TMenuItem
-        Caption = 'T'#233'l'#233'charger les drivers'
-        OnClick = lchargerlesdrivers1Click
+      object Links: TMenuItem
+        Caption = 'Liens'
+        object Wiki1: TMenuItem
+          Caption = 'Wiki'
+          OnClick = Wiki1Click
+        end
+        object N2: TMenuItem
+          Caption = '-'
+        end
+        object A_propos: TMenuItem
+          Caption = 'Fichiers source'
+          OnClick = A_proposClick
+        end
+        object Siteofficieldes2p: TMenuItem
+          Caption = 'Site officiel de s2p'
+          OnClick = Siteofficieldes2pClick
+        end
+        object SiteofficielPicaxe1: TMenuItem
+          Caption = 'Site officiel Picaxe'
+          OnClick = SiteofficielPicaxe1Click
+        end
+        object N7: TMenuItem
+          Caption = '-'
+        end
+        object lchargerlesdrivers1: TMenuItem
+          Caption = 'T'#233'l'#233'charger les pilotes'
+          OnClick = lchargerlesdrivers1Click
+        end
       end
       object N1: TMenuItem
         Caption = '-'

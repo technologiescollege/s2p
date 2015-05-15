@@ -361,3 +361,15 @@ delete INI;
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TInterfaceS2P::InstallDriversClick(TObject *Sender)
+{
+ShellExecute(0, 0, "axe027_installer.exe", 0, (ExtractFilePath(Application->ExeName) + "drivers").c_str() , SW_SHOW );
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInterfaceS2P::DriversClick(TObject *Sender)
+{
+ShellExecute(0, 0, "explorer.exe", (ExtractFilePath(Application->ExeName) + "drivers").c_str(), 0, SW_SHOW );
+}
+//---------------------------------------------------------------------------
+
