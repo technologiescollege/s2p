@@ -11,6 +11,10 @@ _Toutes les informations sur le site officiel : [http://www.picaxe.com/Software/
 
 Ce projet vous fournit le logiciel s2p dézippé, avec de la documentation, des exemples et une interface pour tout gérer, ou faire gérer par des enfants de façon simple.
 
+###Version 2.2.10 du 27 octobre 2015
+Mise à jour du s2p officiel en version 0.1.0.
+
+
 ###Version 2.2.9 du 15 mai 2015
 Mise à jour du s2p officiel en version 0.0.9.
 
