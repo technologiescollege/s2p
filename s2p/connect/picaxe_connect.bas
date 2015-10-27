@@ -1,7 +1,7 @@
 
 ; *****************************************************************************
 ; *                                                                           *
-; * PICAXE Connect Program                                              028   *
+; * PICAXE Connect Program                                              029   *
 ; *                                                                           *
 ; *****************************************************************************
 ; *                                                                           *
@@ -54,11 +54,12 @@
 ; *     0.26    JB  Fixed baudrate for LCD output                             *
 ; *     0.27    JB  Added INFRAIN+1                                           *
 ; *     0.28    JB  Removed INFRAIN+1                                         *
+; *     0.29    JB  Fixed ULTRA frequency                                     *
 ; *                                                                           *
 ; *****************************************************************************
 
   Symbol VERSION_MAJOR = 0
-  Symbol VERSION_MINOR = 28
+  Symbol VERSION_MINOR = 29
 
 ; .---------------------------------------------------------------------------.
 ; | Define the PICAXE type during testing                                     |
@@ -1589,7 +1590,9 @@ TouchCommand:
 
 UltraCommand:
 
+  SetFreq FREQ_DEFAULT
   Ultra w1, w2
+  SetFreq FREQ
 
   SerTxd( "ULTRA" )
   Goto ShowPinPlusResult
