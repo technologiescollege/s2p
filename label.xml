@@ -16,9 +16,9 @@
   <Labels>
     <Popup type="TComboBox">
       <Items>
-        <FR>Le fichier scratch2.bat n'existe pas.\Le fichier scratch2.bat n'existe pas.\Interface réalisée par Sébastien Canet, décembre 2014 - v2.2.9 indexée sur la version de S2P</FR>
-        <EN>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.2.9 with version of s2p Revolution Education</EN>
-		<ES>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.2.9 - mai 2015</ES>
+        <FR>Le fichier scratch2.bat n'existe pas.\Le fichier scratch2.bat n'existe pas.\Interface réalisée par Sébastien Canet, décembre 2014 - v2.2.11 indexée sur la version de S2P - 01/2016</FR>
+        <EN>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, december 2014 - v2.2.11 with version of s2p Revolution Education - 01/2016</EN>
+		<ES>The file 'scratch2.bat' does not exist.\The file 'scratch2.bat' does not exist.\Software created by Sébastien Canet, deciembre 2014 - v2.2.11 - 01/2016</ES>
       </Items>
     </Popup>
 	<InterfaceS2P type="TInterfaceS2P">
